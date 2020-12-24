@@ -106,6 +106,8 @@ AOS.init({
       stagePadding: 0,
       nav: false,
       dots: true,
+      mouseDrag: true,
+      touchDrag: false,
       navText: [
         '<span class="ion-ios-arrow-back">',
         '<span class="ion-ios-arrow-forward">',
