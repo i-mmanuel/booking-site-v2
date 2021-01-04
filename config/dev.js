@@ -29,14 +29,6 @@ module.exports = {
     '4-bedroom-apartment': fourBedApartment,
   },
 
-  dateToday: () => {
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-    return `${yyyy}-${mm}-${dd}`;
-  },
-
   isDateAvailable: async (
     model,
     checkin_date,
@@ -55,20 +47,25 @@ module.exports = {
       (date) => date.checkout_date >= checkin_date
     );
 
-    console.log(datesBelowCheckOutDate);
+    // console.log(datesBelowCheckOutDate);
+
+    if (checkins.length === maxNumberOfRooms) {
+      return {
+        ...obj,
+        message: 'All rooms booked for that day',
+        isAvailable: false,
+      };
+    }
 
     if (datesBelowCheckOutDate.length >= maxNumberOfRooms) {
       return {
         ...obj,
-        error: `There are no rooms available for ${datesBelowCheckOutDate.length} days`,
+        message: `There are no rooms available for ${datesBelowCheckOutDate.length} days`,
+        isAvailable: false,
       };
     }
 
-    if (checkins === maxNumberOfRooms) {
-      return { ...obj, error: 'All rooms booked for that day' };
-    }
-
-    return { ...obj, message: 'There is room for you.' };
+    return { ...obj, message: 'There is room for you.', isAvailable: true };
     // Check how many rooms are booked within the checkin date and checkout date.
 
     // Check if checkin date is less than all checkout dates. If checkin date is less than

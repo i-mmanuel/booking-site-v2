@@ -10775,6 +10775,7 @@ h5,
   top: 0;
   right: 0;
   width: 100%;
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-position: center center;
@@ -10803,6 +10804,7 @@ h5,
   position: relative;
   font-size: 100px;
   font-weight: 300;
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-position: center center;
@@ -12309,6 +12311,7 @@ textarea.form-control {
 .mfp-with-zoom .mfp-container,
 .mfp-with-zoom.mfp-bg {
   opacity: 0;
+  backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;

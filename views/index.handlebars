@@ -66,7 +66,7 @@
     <div class="row justify-content-center pb-0 pb-mb-5 pt-5 pt-md-0">
       <div class="col-md-12 heading-section ftco-animate">
         <!-- <span class="subheading">Sexy &amp; Healthy</span> -->
-        <h2 class="mb-4">When do you want to book for?</h2>
+        <h2 class="mb-4">When do you want to book for? {{manny}}</h2>
         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
       </div>
     </div>
@@ -104,13 +104,15 @@
                   </div>
                 </div>
               </div>
+
               <div class="col-lg align-items-end">
                 <div class="form-group">
                   <label for="checkout_date">Check-out date</label>
                   <div class="form-field">
                     <div class="icon"><span class="ion-ios-calendar"></span></div>
                     <input name="checkout_date" min={{minDate}} placeholder="Check Out Date"
-                      class="form-control checkout_date" type="date" value={{checkout_date}} />
+                      class="form-control checkout_date" type="date" onfocus="(this.type='date')" {{#if checkout_date}}
+                      value={{checkout_date}} {{else}} value='' {{/if}} />
                     <!-- <input type="text" class="form-control checkout_date" placeholder="Check Out Date"> -->
                   </div>
                 </div>
@@ -150,7 +152,7 @@
     			              </div> -->
               </div>
               <div class="col-lg align-self-end">
-                <div class="form-group">
+                <div class="form-group mt-3">
                   <div class="form-field">
                     <input type="submit" value="Search" class="form-control btn btn-primary">
                   </div>
@@ -160,14 +162,15 @@
         </div>
 
         <div id="message-area1" style="display:none;">
-          <a href="#" id="success-popup-message">
+          <div href="#" id="success-popup-message">
             <div class="alert alert-success mt-3" role="alert">
               <h4 class="alert-heading" id="message-head"></h4>
               <p>Please go ahead to reserve this space!</p>
-              <hr>
-              <strong class="mb-0">Click here to reserve</strong>
+              {{!--
+              <hr> --}}
+              {{!-- <strong i class="mb-0">Click here to reserve</strong> --}}
             </div>
-          </a>
+          </div>
         </div>
       </div>
     </div>
@@ -431,13 +434,12 @@
   </div>
 </section>
 
-<section class="ftco-section contact-section ftco-no-pb" id="contact-section">
+<section class="ftco-section contact-section ftco-no-pb" style="display: none;" id="contact-section">
   <div class="container">
-    <div class="row justify-content-center mb-5 pb-3">
+    <div class="row justify-content-center pb-3">
       <div class="col-md-7 heading-section text-center ftco-animate">
         <span class="subheading">Reservation</span>
         <h2 class="mb-4">Reserve Now</h2>
-        <p>Please check room availability first. <a href="#room-availability">CLICK HERE TO DO SO.</a></p>
       </div>
     </div>
 
@@ -447,21 +449,25 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="first_name">First name:</label>
-              <input name="first_name" type="text" class="form-control" id="inputEmail4" placeholder="First name">
+              <input name="first_name" type="text" class="form-control" id="inputEmail4" autocapitalize="true"
+                autocomplete="given-name" placeholder="First name" required />
             </div>
             <div class="form-group col-md-6">
               <label for="last_name">Last name:</label>
-              <input name="last_name" type="text" class="form-control" id="inputPassword4" placeholder="Last name">
+              <input name="last_name" autocapitalize="true" autocomplete="family-name" type="text" class="form-control"
+                id="inputPassword4" placeholder="Last name" required />
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="phone">Phone:</label>
-              <input name="phone" type="phone" class="form-control" id="inputEmail4" placeholder="Phone number">
+              <input name="phone" type="phone" class="form-control" id="inputEmail4" placeholder="Phone number"
+                required />
             </div>
             <div class="form-group col-md-6">
               <label for="last_name">Email:</label>
-              <input name="email" type="email" class="form-control" id="inputPassword4" placeholder="Email">
+              <input name="email" type="email" autocomplete="email" class="form-control" id="inputPassword4"
+                placeholder="Email" required />
             </div>
           </div>
           <div class="form-row">
@@ -483,11 +489,6 @@
           <button type="submit" class="btn btn-lng btn-block btn-primary">Reserve Space</button>
           <div id="message-area">
           </div>
-          {{#if bookingMessage}}
-          <div class="alert alert-danger mt-2" role="alert">
-            {{bookingMessage}}
-          </div>
-          {{/if}}
         </form>
       </div>
 

@@ -3,12 +3,6 @@ const Router = Express.Router();
 const { dateToday } = require('../../config/dev');
 const { roomTypes } = require('../../config/dev');
 
-const renderOptions = {
-  minDate: dateToday,
-  message: '',
-  error: '',
-};
-
 // Handle room request.
 Router.post('/room-booking', async (request, response) => {
   const {
@@ -33,6 +27,8 @@ Router.post('/room-booking', async (request, response) => {
 
   // Create new booking for good generals.
 
+  console.log(roomTypes);
+
   try {
     let room = new roomTypes[room_type]({
       email,
@@ -47,13 +43,11 @@ Router.post('/room-booking', async (request, response) => {
 
     await room.save();
     response.send({
-      ...renderOptions,
-      bookingMessage: 'There is hope for thee',
+      bookingMessage:
+        'Your room has been booked! You will receive an email from us soon.',
     });
   } catch (error) {
-    return response
-      .status(422)
-      .send({ ...renderOptions, bookingError: error.message });
+    return response.status(422).send({ bookingError: error.message });
   }
 
   //Return and render page.
