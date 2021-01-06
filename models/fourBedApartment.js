@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const fourBedApartment = new mongoose.Schema({
+const fourBedApartmentSchema = new mongoose.Schema({
   email: {
     type: String,
   },
@@ -21,4 +21,8 @@ const fourBedApartment = new mongoose.Schema({
   },
 });
 
-mongoose.model('4-Bedroom-Apartment', fourBedApartment);
+const fourBedApartment = mongoose.model(
+  '4-Bedroom-Apartment',
+  fourBedApartmentSchema
+);
+module.exports = { fourBedApartment };

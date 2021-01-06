@@ -1,8 +1,14 @@
 const mongoose = require('mongoose');
 require('../models/goodGenerals');
 require('../models/fourBedApartment');
+require('../models/domitories');
+require('../models/wiseAsSerpents');
+require('../models/hotelStyle');
 const goodGeneralBooking = mongoose.model('Good-generals');
 const fourBedApartment = mongoose.model('4-Bedroom-Apartment');
+const wiseAsSerpents = mongoose.model('Wise-As-Serpents');
+const hotelStyle = mongoose.model('Hotel-Style');
+const domitories = mongoose.model('Domitories');
 
 module.exports = {
   mongoURI:
@@ -27,6 +33,9 @@ module.exports = {
   roomTypes: {
     'Good-generals': goodGeneralBooking,
     '4-bedroom-apartment': fourBedApartment,
+    'Wise-as-serpents': wiseAsSerpents,
+    'Hotel-style': hotelStyle,
+    Domitories: domitories,
   },
 
   isDateAvailable: async (

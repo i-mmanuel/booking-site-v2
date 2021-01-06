@@ -161,7 +161,7 @@
           </form>
         </div>
 
-        <div id="message-area1" style="display:none;">
+        <div id="message-area1" class="" style="display:none;">
           <div href="#" id="success-popup-message">
             <div class="alert alert-success mt-3" role="alert">
               <h4 class="alert-heading" id="message-head"></h4>
@@ -473,12 +473,12 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="checkinn_date">Check In:</label>
-              <input name="checkinn_date" type="date" disabled class="form-control" id="inputEmail4"
+              <input name="checkinn_date" type="text" disabled readonly class="form-control" id="inputEmail4"
                 placeholder="Check In" value={{checkin_date}}>
             </div>
             <div class="form-group col-md-6">
               <label for="checkoutt_date">Check Out</label>
-              <input name="checkoutt_date" type="date" disabled class="form-control" id="inputPassword4"
+              <input name="checkoutt_date" type="text" disabled readonly class="form-control" id="inputPassword4"
                 placeholder="Check Out" value={{checkout_date}}>
             </div>
           </div>

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const goodGeneralSchema = new mongoose.Schema(
+const domitoriesSchema = new mongoose.Schema(
   {
     email: {
       type: String,
@@ -34,6 +34,6 @@ const goodGeneralSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const goodGenerals = mongoose.model('Good-generals', goodGeneralSchema);
+const Domitories = mongoose.model('Domitories', domitoriesSchema);
 
-module.exports = { goodGenerals };
+module.exports = { Domitories };

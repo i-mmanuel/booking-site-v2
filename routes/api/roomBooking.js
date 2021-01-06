@@ -1,10 +1,9 @@
 const Express = require('express');
 const Router = Express.Router();
-const { dateToday } = require('../../config/dev');
 const { roomTypes } = require('../../config/dev');
 
 // Handle room request.
-Router.post('/room-booking', async (request, response) => {
+Router.post('/api/room-booking', async (request, response) => {
   const {
     first_name,
     last_name,

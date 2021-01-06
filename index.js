@@ -2,19 +2,39 @@ const Express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
-const booking = require('./routes/api/booking');
-const roomBooking = require('./routes/rooms/roomBooking');
-const roomAvailability = require('./routes/rooms/roomAvailability');
-
+const mongoose = require('mongoose');
+const AdminBro = require('admin-bro');
+const AdminBroExpress = require('@admin-bro/express');
+const { mongoURI } = require('./config/dev');
+const roomBooking = require('./routes/api/roomBooking');
+const roomAvailability = require('./routes/api/roomAvailability');
 const app = Express();
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
+// MongoDB connect
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+});
+mongoose.connection.on('connected', () => {
+  console.log('Connected to Mongo instance.');
+});
+mongoose.connection.on('error', (error) => {
+  console.log('Error connecting to Mongo instance', error);
+});
+
+// AdminBro setup
+const adminBro = require('./admin');
+const router = AdminBroExpress.buildRouter(adminBro);
+app.use(adminBro.options.rootPath, router);
+
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Set static folder
+// Get today's date for form input.
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!

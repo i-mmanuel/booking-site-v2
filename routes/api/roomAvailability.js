@@ -1,11 +1,10 @@
 const Express = require('express');
 const Router = Express.Router();
-const { dateToday } = require('../../config/dev');
 const { isDateAvailable } = require('../../config/dev');
 const { roomTypes } = require('../../config/dev');
 
 // Handle room request.
-Router.post('/room-availability', async (request, response) => {
+Router.post('/api/room-availability', async (request, response) => {
   const { room_type, checkin_date, checkout_date, adult_number } = request.body;
 
   // console.log(`Submitted availability: `, request.body);

@@ -27,11 +27,14 @@ $('.search-property-1').on('submit', function (e) {
   // Making the post request.
   $.ajax({
     type: 'POST',
-    url: '/room-availability',
+    url: '/api/room-availability',
     data: dataObject,
     success: function (data) {
       // Make reservation details available to local variable.
       reservedRoomDetails = { ...data };
+
+      // Hide element before edits take place
+      $('#message-area1').fadeOut(100);
 
       // Remove danger alert, and set it to success.
       document
@@ -74,6 +77,9 @@ $('.search-property-1').on('submit', function (e) {
       ).value = data.room_type.split('-').join(' ');
     },
     error: function (error) {
+      // Hide elements again before edits take place
+      $('#message-area1').fadeOut(100);
+
       // Display error message.
       document.querySelector('#message-head').innerText =
         error.responseJSON.error;
@@ -86,7 +92,8 @@ $('.search-property-1').on('submit', function (e) {
         .getElementsByClassName('alert')[0]
         .classList.remove('alert-success');
       document.getElementsByClassName('alert')[0].classList.add('alert-danger');
-      $('#message-area1').fadeIn(500);
+
+      $('#message-area1').fadeOut(100).fadeIn(500);
     },
   });
 });

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const goodGeneralSchema = new mongoose.Schema(
+const hotelStyleSchema = new mongoose.Schema(
   {
     email: {
       type: String,
@@ -34,6 +34,5 @@ const goodGeneralSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const goodGenerals = mongoose.model('Good-generals', goodGeneralSchema);
-
-module.exports = { goodGenerals };
+const hotelStyle = mongoose.model('Hotel-Style', hotelStyleSchema);
+module.exports = { hotelStyle };

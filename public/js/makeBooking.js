@@ -15,7 +15,7 @@ $('.contact-form').on('submit', function (e) {
 
   $.ajax({
     type: 'POST',
-    url: '/room-booking',
+    url: '/api/room-booking',
     data: dataObject,
     success: function (data) {
       $('#message-area')
