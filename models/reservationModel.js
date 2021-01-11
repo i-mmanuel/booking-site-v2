@@ -25,8 +25,7 @@ const reservationSchema = new mongoose.Schema({
     type: String,
   },
   adult_number: {
-    type: Number,
-    default: 1,
+    type: String,
   },
 });
 

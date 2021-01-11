@@ -1,13 +1,11 @@
 const Express = require('express');
 const Router = Express.Router();
 const { isDateAvailable } = require('../../config/dev');
-const { roomTypes } = require('../../config/dev');
+const { roomTypes, returnRoomNumber } = require('../../config/dev');
 
 // Handle room request.
 Router.post('/api/room-availability', async (request, response) => {
   const { room_type, checkin_date, checkout_date, adult_number } = request.body;
-
-  // console.log(`Submitted availability: `, request.body);
 
   // Validate inputs.
   if (!checkin_date || !checkout_date || !adult_number || !room_type) {
@@ -20,11 +18,12 @@ Router.post('/api/room-availability', async (request, response) => {
       .send({ error: 'Please make sure you book a date after checkin date' });
   }
 
+  // Check availability.
   const availableResponse = await isDateAvailable(
     roomTypes[room_type],
     checkin_date,
     checkout_date,
-    3
+    await returnRoomNumber(room_type)
   );
 
   if (availableResponse.isAvailable) {
@@ -33,7 +32,8 @@ Router.post('/api/room-availability', async (request, response) => {
       ...availableResponse,
       checkin_date: checkin_date || minDate,
       checkout_date: checkout_date || '',
-      room_type: room_type,
+      room_type,
+      adult_number,
     });
   } else {
     return response.status(401).send({ error: availableResponse.message });

@@ -18,11 +18,26 @@ $('.contact-form').on('submit', function (e) {
     url: '/api/room-booking',
     data: dataObject,
     success: function (data) {
-      $('#message-area')
+      document.querySelector('form.search-property-1').reset();
+      document.querySelector('form.contact-form').reset();
+      $('#message-area1').hide();
+      $('#contact-section').hide();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+
+      $('#m-modal')
         .html(
-          `<div class="alert alert-success mt-3" role="alert">${data.bookingMessage}</div>`
+          `<div class="alert alert-success container" role="alert" style="top: 25%;">
+      <h4 class="alert-heading">Thank you for booking, ${data.first_name}!</h4>
+      <p>You have successfully made for a booking for ${data.room_type
+        .split('-')
+        .join(' ')}. An email containing all details have been sent to you.</p>
+      <hr>
+      <p class="mb-0">Please email email@email.com for any queries.</p>
+    </div>`
         )
-        .hide()
         .fadeIn(500);
     },
     error: function (error) {

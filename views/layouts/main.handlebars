@@ -24,6 +24,11 @@
   <link rel="stylesheet" href="/css/flaticon.css" />
   <link rel="stylesheet" href="/css/icomoon.css" />
   <link rel="stylesheet" href="/css/style.css" />
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/css/bootstrap-modal-bs3patch.css"
+    integrity="sha512-PLPZdOXQAXELGb6+1GKTjIRzI9fiIYmI6280sxmd9dGDgPND3cWmxBddOtQHmUELldeVLIgl8FrLUHyz3B9Y3A=="
+    crossorigin="anonymous" />
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -46,7 +51,7 @@
           <li class="nav-item"><a href="#hotel-section" class="nav-link"><span>Hotel</span></a></li>
           <!-- <li class="nav-item"><a href="#restaurant-section" class="nav-link"><span>Restaurant</span></a></li> -->
           <!-- <li class="nav-item"><a href="#blog-section" class="nav-link"><span>Blog</span></a></li> -->
-          <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
+          <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Reservation</span></a></li>
         </ul>
       </div>
     </div>
@@ -108,7 +113,7 @@
       </div>
     </div>
   </section>
-  <footer class="ftco-footer ftco-section">
+  {{!-- <footer class="ftco-footer ftco-section">
     <div class="container">
       <div class="row mb-5">
         <div class="col-md">
@@ -165,7 +170,7 @@
         </div>
       </div>
     </div>
-  </footer>
+  </footer> --}}
 
 
 
@@ -174,13 +179,36 @@
       <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
       <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
         stroke="#F96D00" />
-    </svg></div>
+    </svg>
+  </div>
 
+  <section id="m-modal" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(63, 54, 54, 0.8);
+  display: none;
+  ">
+    <div class="alert alert-success container" role="alert" style="top: 25%;">
+      <h4 class="alert-heading">Thank you for booking!</h4>
+      <p>You have successfully made a booking for bla bla bla</p>
+      <hr>
+      <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+    </div>
+  </section>
 
   <script src="/js/plugins/jquery.min.js"></script>
   <script src="/js/plugins/jquery-migrate-3.0.1.min.js"></script>
   <script src="/js/plugins/popper.min.js"></script>
   <script src="/js/plugins/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modalmanager.min.js"
+    integrity="sha512-/HL24m2nmyI2+ccX+dSHphAHqLw60Oj5sK8jf59VWtFWZi9vx7jzoxbZmcBeeTeCUc7z1mTs3LfyXGuBU32t+w=="
+    crossorigin="anonymous"></script>
   <script src="/js/plugins/jquery.easing.1.3.js"></script>
   <script src="/js/plugins/jquery.waypoints.min.js"></script>
   <script src="/js/plugins/jquery.stellar.min.js"></script>
@@ -193,6 +221,16 @@
   <script src="/js/main.js"></script>
   <script src="/js/checkAvailability.js"></script>
   <script src="/js/makeBooking.js"></script>
+
+  <script>
+    const m_modal = document.querySelector('#m-modal');
+
+    window.onclick = () => {
+      if (event.target == m_modal) {
+        m_modal.style.display = 'none'
+      }
+    }
+  </script>
 
 </body>
 

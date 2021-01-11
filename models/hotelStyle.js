@@ -24,7 +24,6 @@ const hotelStyleSchema = new mongoose.Schema(
     },
     adult_number: {
       type: String,
-      default: '',
     },
     phone: {
       type: String,

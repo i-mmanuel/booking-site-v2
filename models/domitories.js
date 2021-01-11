@@ -24,7 +24,6 @@ const domitoriesSchema = new mongoose.Schema(
     },
     adult_number: {
       type: String,
-      default: '',
     },
     phone: {
       type: String,
@@ -34,6 +33,6 @@ const domitoriesSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Domitories = mongoose.model('Domitories', domitoriesSchema);
+const domitories = mongoose.model('Domitories', domitoriesSchema);
 
-module.exports = { Domitories };
+module.exports = { domitories };

@@ -32,6 +32,7 @@ $('.search-property-1').on('submit', function (e) {
     success: function (data) {
       // Make reservation details available to local variable.
       reservedRoomDetails = { ...data };
+      console.log(reservedRoomDetails);
 
       // Hide element before edits take place
       $('#message-area1').fadeOut(100);

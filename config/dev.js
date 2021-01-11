@@ -1,14 +1,18 @@
 const mongoose = require('mongoose');
+
 require('../models/goodGenerals');
 require('../models/fourBedApartment');
 require('../models/domitories');
 require('../models/wiseAsSerpents');
 require('../models/hotelStyle');
-const goodGeneralBooking = mongoose.model('Good-generals');
-const fourBedApartment = mongoose.model('4-Bedroom-Apartment');
-const wiseAsSerpents = mongoose.model('Wise-As-Serpents');
-const hotelStyle = mongoose.model('Hotel-Style');
-const domitories = mongoose.model('Domitories');
+require('../models/numberOfRooms');
+
+const goodGeneral = mongoose.model('Good-generals');
+const fourBedroomApartment = mongoose.model('4-Bedroom-Apartment');
+const wiseAsSerpent = mongoose.model('Wise-As-Serpents');
+const hotelStyles = mongoose.model('Hotel-Style');
+const domitores = mongoose.model('Domitories');
+const roomNumber = mongoose.model('Number-Of-Rooms');
 
 module.exports = {
   mongoURI:
@@ -31,11 +35,30 @@ module.exports = {
   },
 
   roomTypes: {
-    'Good-generals': goodGeneralBooking,
-    '4-bedroom-apartment': fourBedApartment,
-    'Wise-as-serpents': wiseAsSerpents,
-    'Hotel-style': hotelStyle,
-    Domitories: domitories,
+    'Good-generals': goodGeneral,
+    '4-bedroom-apartment': fourBedroomApartment,
+    'Wise-as-serpents': wiseAsSerpent,
+    Domitories: domitores,
+    'Hotel-style': hotelStyles,
+  },
+
+  returnRoomNumber: async (room) => {
+    let num = await roomNumber.findById('5ffb594ccacf02432d066a47');
+
+    switch (room) {
+      case 'Good-generals':
+        return num.goodGenerals;
+      case 'Hotel-style':
+        return num.hotelStyle;
+      case 'Wise-as-serpents':
+        return num.wiseAsSerpents;
+      case '4-bedroom-apartment':
+        return num.fourBedApartment;
+      case 'Domitories':
+        return num.domitories;
+      default:
+        break;
+    }
   },
 
   isDateAvailable: async (
@@ -56,8 +79,6 @@ module.exports = {
       (date) => date.checkout_date >= checkin_date
     );
 
-    // console.log(datesBelowCheckOutDate);
-
     if (checkins.length === maxNumberOfRooms) {
       return {
         ...obj,
@@ -69,7 +90,7 @@ module.exports = {
     if (datesBelowCheckOutDate.length >= maxNumberOfRooms) {
       return {
         ...obj,
-        message: `There are no rooms available for ${datesBelowCheckOutDate.length} days`,
+        message: `There are no rooms available for some days`,
         isAvailable: false,
       };
     }
