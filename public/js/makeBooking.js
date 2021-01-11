@@ -33,7 +33,7 @@ $('.contact-form').on('submit', function (e) {
       <h4 class="alert-heading">Thank you for booking, ${data.first_name}!</h4>
       <p>You have successfully made for a booking for ${data.room_type
         .split('-')
-        .join(' ')}. An email containing all details have been sent to you.</p>
+        .join(' ')}. An email containing all details has been sent to you.</p>
       <hr>
       <p class="mb-0">Please email email@email.com for any queries.</p>
     </div>`

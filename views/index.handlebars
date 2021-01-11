@@ -18,12 +18,11 @@
           <div class="one-forth d-flex align-items-center ftco-animate"
             data-scrollax=" properties: { translateY: '70%' }">
             <div class="text">
-              <span class="subheading pl-5">Discover Greece</span>
-              <h1 class="mb-4 mt-3">Explore Your Travel Destinations like never before</h1>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a
-                paradisematic country.</p>
+              <span class="subheading pl-5">Spend a weekend</span>
+              <h1 class="mb-4 mt-3">Explore Your Anagkazo like never before</h1>
+              <p>With so many things to see and do, there is no room for boredom</p>
 
-              <p><a href="#" class="btn btn-primary px-5 py-3 mt-3">Discover <span
+              <p><a href="#check-availability" class="btn btn-primary px-5 py-3 mt-3">Book now <span
                     class="ion-ios-arrow-forward"></span></a></p>
             </div>
           </div>
@@ -46,12 +45,11 @@
           <div class="one-forth d-flex align-items-center ftco-animate"
             data-scrollax=" properties: { translateY: '70%' }">
             <div class="text">
-              <span class="subheading pl-5">Discover Africa</span>
+              <span class="subheading pl-5">Anagkazo at night</span>
               <h1 class="mb-4 mt-3">Never Stop Exploring</span></h1>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a
-                paradisematic country.</p>
+              <p>The scenes just get better with the night fall.</p>
 
-              <p><a href="#" class="btn btn-primary px-5 py-3 mt-3">Discover <span
+              <p><a href="#check-availability" class="btn btn-primary px-5 py-3 mt-3">Book now <span
                     class="ion-ios-arrow-forward"></span></a></p>
             </div>
           </div>
@@ -66,15 +64,15 @@
     <div class="row justify-content-center pb-0 pb-mb-5 pt-5 pt-md-0">
       <div class="col-md-12 heading-section ftco-animate">
         <!-- <span class="subheading">Sexy &amp; Healthy</span> -->
-        <h2 class="mb-4">When do you want to book for? {{manny}}</h2>
-        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+        <h2 class="mb-4">When do you want to book for?</h2>
+        <p>Please fill this form out to check room availability in order to book.</p>
       </div>
     </div>
-    <div class="row">
+    <div class="row" id="check-availability">
       <div class="col-md-12 mt-4">
         <div class="search-wrap-1 ftco-animate p-4">
           <form method="POST" action="/room-availability" class="search-property-1"
-            enctype="application/x-www-form-urlencoded">
+            enctype="application/x-www-form-urlencoded" id="check-availability">
             <div class="row">
               <div class="col-lg align-items-end">
                 <div class="form-group">
@@ -123,7 +121,7 @@
                   <div class="form-field">
                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                     <input name='adult_number' placeholder="Number of Adults" class="form-control adults_number"
-                      type="number" min="1" value="1" required />
+                      type="number" min="1" required />
                   </div>
                 </div>
                 <!-- <div class="form-group">
@@ -234,7 +232,7 @@
   <div class="container">
     <div class="row no-gutters d-flex">
       <div class="col-md-6 col-lg-5 d-flex">
-        <div class="img d-flex align-self-stretch align-items-center" style="background-image:url(images/about.jpg);">
+        <div class="img d-flex align-self-stretch align-items-center" style="background-image:url(images/image_1.jpg);">
         </div>
       </div>
       <div class="col-md-6 col-lg-7 px-lg-5 py-md-5 bg-darken">
@@ -243,14 +241,11 @@
             <div class="col-md-12 heading-section ftco-animate p-5 p-lg-0">
               <span class="subheading">Get in touch with us</span>
               <h2 class="mb-4">Get Best Travel Deals</h2>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a
-                paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-              <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life
-                One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World
-                of Grammar.</p>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a
-                paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-              <p><a href="#" class="btn btn-primary py-3 px-4">Book now</a> <a href="#"
+              <p>Are you in a group of more than a 100 people? Contact us for special deals.</p>
+              <p>Are you planning a camp with us and would like to organise accommodation for the delegates? Contact us
+                for special deals.</p>
+              <p>Do you just an escape to spend some time with God by yourself?</p>
+              <p><a href="#check-availability" class="btn btn-primary py-3 px-4">Book now!</a> <a href="#"
                   class="btn btn-white py-3 px-4">Contact us</a></p>
             </div>
           </div>
