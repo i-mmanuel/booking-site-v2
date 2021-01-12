@@ -270,7 +270,7 @@ AOS.init({
     fixedContentPos: true,
     mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
     gallery: {
-      enabled: true,
+      enabled: false,
       navigateByImgClick: true,
       preload: [0, 1], // Will preload 0 - before current, and 1 after the current image
     },
